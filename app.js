@@ -28,7 +28,12 @@ new Vue({
             this.monsterAttack();
         },
         heal: function () {
-
+            if (this.playerHealth <= 90) {
+                this.playerHealth += 10;
+            } else {
+                this.playerHealth = 100;
+            }
+            this.monsterAttack();
         },
         giveUp: function () {
 
@@ -52,7 +57,7 @@ new Vue({
             } else if (this.playerHealth <= 0) {
                 if (confirm('You lost! Start a new game?')) {
                     this.startGame();
-                    return true;
+                    return;
                 } else {
                     this.gameIsRunning = false;
                 }
